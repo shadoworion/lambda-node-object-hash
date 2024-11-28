@@ -1,0 +1,26 @@
+{
+  "name": "tasks",
+  "version": "1.0.0",
+  "author": "Test",
+  "license": "MIT",
+  "scripts": {
+    "start": "npm run gen && node dist/task.js",
+    "dev": "ts-node-dev --poll src/task.ts --max_old_space_size=4096",
+    "clean": "rm -rf ./dist",
+    "build": "yarn clean && tsc",
+    "test": "yarn build && docker build --platform linux/arm64 -t tasks . && docker run -p 9000:8080 tasks"
+  },
+  "dependencies": {
+    "shadoworion-test-hasher-package": "0.0.1",
+    "node-object-hash": "3.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "22.10.0",
+    "ts-node": "10.9.2",
+    "ts-node-dev": "2.0.0",
+    "typescript": "5.7.2"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
